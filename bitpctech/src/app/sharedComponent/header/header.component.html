@@ -17,7 +17,7 @@
       <a *ngIf="!isLoggedIn; else notLogedIn" class="app-btn vertical-center" routerLink='/user/login' href="#" rel="nofollow">
         <span>Login</span>
       </a>
-      <ng-template #notLoggedIn>
+      <ng-template #notLogedIn>
         <a class="app-btn vertical-center" routerLink='' (click)="onLogout()">Logout</a>
       </ng-template>
     </div>
