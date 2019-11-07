@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/ngx-toastr/toastr.css";
+
+/* login button css */
+.app-btn {
+    border-radius: 20px;
+    border: 2px solid #929aab;
+    color: #929aab !important;
+    font-size: 14px;
+    transition: all 0.4s;
+    cursor: pointer;
+    padding: 4px 17px 5px 17px;
+    margin-right: 28px;
+    line-height: 24px;
+  }
+  .app-btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.4s;
+  }
+  .app-btn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  .app-btn:hover{
+    border: 2px solid #FFFFFF;
+  }
+  .app-btn:hover span {
+    padding-right: 25px;
+    color: #FFFFFF; /* color*/
+  }
+
+  .app-btn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  /* End login btn css*/

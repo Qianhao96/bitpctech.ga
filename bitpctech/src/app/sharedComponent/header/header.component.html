@@ -1,0 +1,25 @@
+<div class="pt-2 pb-2" style="background-color:#222831">
+  <nav class="nav">
+    <!-- Login Location -->
+    <div class="logo">
+      <a href="/" aria-label="Bitpctech">
+        <i class="fas fa-desktop fa-3x"></i>
+      </a>
+    </div>
+
+    <!-- Nav Left Position -->
+    <div class="nav-left vertical-center">
+      <a *ngIf="isLoggedIn && isAdmin" routerLink="/admin" class="nav-link">Admin</a>
+    </div>
+
+    <!-- Nav Right Position -->
+    <div class="nav-right">
+      <a *ngIf="!isLoggedIn; else notLogedIn" class="app-btn vertical-center" routerLink='/user/login' href="#" rel="nofollow">
+        <span>Login</span>
+      </a>
+      <ng-template #notLoggedIn>
+        <a class="app-btn vertical-center" routerLink='' (click)="onLogout()">Logout</a>
+      </ng-template>
+    </div>
+  </nav>
+</div>
