@@ -15,7 +15,7 @@
     <!-- Nav Right Position -->
     <div class="nav-right">
       <a *ngIf="!isLoggedIn; else notLogedIn" class="app-btn vertical-center" routerLink='/user/login' href="#" rel="nofollow">
-        <span>Login</span>
+        <span> Login </span>
       </a>
       <ng-template #notLogedIn>
         <a class="app-btn vertical-center" routerLink='' (click)="onLogout()">Logout</a>
