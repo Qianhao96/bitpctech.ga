@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './sharedComponent/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginAndRegistrationComponent } from './user/login-and-registration/login-and-registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LoginAndRegistrationComponent } from './user/login-and-registration/log
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
   providers: [],
