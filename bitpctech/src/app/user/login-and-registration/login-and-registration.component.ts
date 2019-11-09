@@ -46,7 +46,7 @@ export class LoginAndRegistrationComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  onSignInSubmit(form: NgForm) {
+  onSignInSubmit(form) {
     this.service.login(form.value).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);
