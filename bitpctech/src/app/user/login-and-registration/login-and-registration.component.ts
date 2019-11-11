@@ -19,9 +19,9 @@ export class LoginAndRegistrationComponent implements OnInit {
     private toastrService: ToastrService) { }
 
   ngOnInit() {
-    // if(this.service.isLoggedIn()){
-    //   this.router.navigate(['/home']);
-    // }
+    if(this.service.isLoggedIn()){
+      this.router.navigate(['/']);
+    }
   }
 
   ngDoCheck(){
@@ -70,7 +70,8 @@ export class LoginAndRegistrationComponent implements OnInit {
     matchPassword: new FormGroup({
       password: new FormControl('', [
         Validators.required,
-        RegistrationValidators.passwordLength
+        RegistrationValidators.passwordLength,
+        RegistrationValidators.passwordLetter
       ]),
       confirmPassword: new FormControl('', Validators.required)
     }, { validators: this.comparePasswords })
@@ -117,7 +118,7 @@ export class LoginAndRegistrationComponent implements OnInit {
         //this.router.navigate(['/user/login']);
       },
       err => {
-        this.toastrService.success(err.Errors);
+        this.toastrService.success(err.error["errors"]);
       }
     );
   }

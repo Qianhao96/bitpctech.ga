@@ -11,4 +11,13 @@ export class RegistrationValidators {
                 }
             }
     }
+
+    static passwordLetter(control: AbstractControl): ValidationErrors | null {
+        if (!(control.value as string).match(/[a-z]/i))
+            return {
+                passwordLetter: {
+                    requiredLetter: "Password must contains alphabetical characters"
+                }
+            }
+    }
 }

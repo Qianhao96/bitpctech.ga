@@ -1,3 +1,4 @@
+import { ParticlesModule } from 'angular-particle';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginAndRegistrationComponent } from './user/login-and-registration/login-and-registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ParticlesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
