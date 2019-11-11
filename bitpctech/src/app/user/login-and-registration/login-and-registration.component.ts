@@ -51,6 +51,8 @@ export class LoginAndRegistrationComponent implements OnInit {
       (res: any) => {
         localStorage.setItem('token', res.token);
         this.toastrService.success('Hi, welcome!');
+        this.toastrService.success('小曾曾!');
+        this.toastrService.success('小曾曾!');
         this.router.navigate(['/'])
       },
       err => {
