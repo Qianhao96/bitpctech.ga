@@ -1,4 +1,4 @@
-<div class="sticky" style="background-color:#222831">
+<div class="sticky-top" style="background-color:#222831">
   <nav class="nav">
     <!-- Login Location -->
     <div class="logo">
@@ -12,18 +12,10 @@
       <a *ngIf="isLoggedIn && isAdmin" routerLink="/admin" class="nav-link">Admin</a>
     </div>
 
-    <div calss="mx-auto">
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <button type="button" class="btn btn-link" (click)="onScorll('div1')">Div1</button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-link" (click)="onScorll('div2')">Div2</button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="btn btn-link" (click)="onScorll('div3')">Div3</button>
-        </li>
-      </ul>
+    <div class="nav-header-center">
+      <button type="button" class="header-btn header-link" (click)="onScroll('div1')">Div1</button>
+      <button type="button" class="header-btn header-link" (click)="onScroll('div2')">Div2</button>
+      <button type="button" class="header-btn header-link" (click)="onScroll('div3')">Div3</button>
     </div>
 
     <!-- Nav Right Position -->

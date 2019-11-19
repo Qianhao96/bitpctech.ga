@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit, DoCheck {
 		this.toastrService.success('Logout successfully');
 	}
 
-	onScorll(id){
+	onScroll(id){
 		let el = document.getElementById(id);
 		if(el != null){
 			el.scrollIntoView({behavior: 'smooth'});
