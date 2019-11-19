@@ -1,0 +1,29 @@
+.line {
+  border-bottom: 1px solid #ababab;
+  width: 170px;
+  margin: 0 auto;
+}
+
+.footer-center {
+  margin: 0 auto;
+}
+
+footer li {
+  display: inline;
+}
+
+footer {
+  position: absolute;
+  bottom: -100px;
+  padding: 10px 0;
+  background-color: #AAA;
+  width: 100%;
+}
+
+.legals:hover {
+  color: #929292;
+}
+
+footer a {
+  text-decoration: none;
+}

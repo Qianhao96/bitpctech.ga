@@ -11,13 +11,17 @@ import { HeaderComponent } from './sharedComponent/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginAndRegistrationComponent } from './user/login-and-registration/login-and-registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './sharedComponent/about/about.component';
+import { FooterComponent } from './sharedComponent/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginAndRegistrationComponent
+    LoginAndRegistrationComponent,
+    AboutComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

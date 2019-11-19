@@ -1,8 +1,8 @@
-<div class="pt-2 pb-2" style="background-color:#222831">
+<div class="sticky" style="background-color:#222831">
   <nav class="nav">
     <!-- Login Location -->
     <div class="logo">
-      <a href="/" aria-label="Bitpctech">
+      <a aria-label="Bitpctech" routerLink='/sharedComponent/about' href="#">
         <i class="fas fa-desktop fa-3x"></i>
       </a>
     </div>
@@ -10,6 +10,20 @@
     <!-- Nav Left Position -->
     <div class="nav-left vertical-center">
       <a *ngIf="isLoggedIn && isAdmin" routerLink="/" class="nav-link">Admin</a>
+    </div>
+
+    <div calss="mx-auto">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <button type="button" class="btn btn-link" (click)="onScorll('div1')">Div1</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-link" (click)="onScorll('div2')">Div2</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-link" (click)="onScorll('div3')">Div3</button>
+        </li>
+      </ul>
     </div>
 
     <!-- Nav Right Position -->
