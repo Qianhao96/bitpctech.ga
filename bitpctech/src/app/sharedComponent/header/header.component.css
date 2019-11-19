@@ -13,3 +13,9 @@
     flex: 0 1 auto;
     margin-left: auto;
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
