@@ -13,10 +13,9 @@ footer li {
 }
 
 footer {
-  position: absolute;
-  margin-top:auto; 
+  position: relative;
   background-color: #AAA;
-  width: 100%;
+  bottom: 10px;
 }
 
 .legals:hover {
