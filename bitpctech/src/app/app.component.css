@@ -2,6 +2,5 @@
   min-height: 100vh;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -58px;
   /*58px为footer的高度+margin */
 }

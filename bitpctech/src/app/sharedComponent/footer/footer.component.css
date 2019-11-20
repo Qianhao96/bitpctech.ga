@@ -13,9 +13,7 @@ footer li {
 }
 
 footer {
-  position: relative;
   background-color: #AAA;
-  bottom: 10px;
 }
 
 .legals:hover {
