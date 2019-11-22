@@ -6,7 +6,7 @@ import { AboutComponent } from './sharedComponent/about/about.component';
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'user/login', component: LoginAndRegistrationComponent },
-  { path: 'sharedComponent/about', component: AboutComponent}
+  { path: 'about-us', component: AboutComponent}
 ];
 @NgModule({
   declarations: [],
