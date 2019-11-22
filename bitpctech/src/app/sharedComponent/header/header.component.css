@@ -16,8 +16,9 @@
 }
 
 .nav-header-center{
+  position: absolute;
   width: 100%;
-  margin:auto auto;
+  top: 20%;
   text-align: center;
 }
 
