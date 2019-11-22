@@ -1,0 +1,6 @@
+.wrapper-add {
+  min-height: 100vh;
+  height: auto !important;
+  height: 100%;
+  /*58px为footer的高度+margin */
+}
