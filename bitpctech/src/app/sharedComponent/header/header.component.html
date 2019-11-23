@@ -22,7 +22,7 @@
             More Actions
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" *ngIf="isLoggedIn && isAdmin" routerLink="/" href="#">Admin</a>
+            <a class="dropdown-item" *ngIf="isLoggedIn && isAdmin" routerLink="/admin/home" href="#">Admin</a>
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
             <a class="dropdown-item" href="#">Something else here</a>
@@ -43,10 +43,10 @@
     </div>
     <div>
       <a *ngIf="!isLoggedIn; else notLoggedIn" class="app-btn" routerLink='/user/login' href="#">
-        <span> Login </span>
+        <span>Login</span>
       </a>
       <ng-template #notLoggedIn>
-        <a class="app-btn" routerLink='' (click)="onLogout()">Logout</a>
+        <a class="app-btn" routerLink='' (click)="onLogout()"><span>Logout</span></a>
       </ng-template>
     </div>
   </nav>

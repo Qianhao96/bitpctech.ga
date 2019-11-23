@@ -88,7 +88,7 @@ export class LoginAndRegistrationComponent implements OnInit {
     }
   }
 
-  toggleNavbar() {
+  toggleNavTab() {
     this.showSignInForm = !this.showSignInForm;
   }
 

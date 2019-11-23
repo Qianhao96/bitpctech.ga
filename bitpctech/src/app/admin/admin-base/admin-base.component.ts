@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminBaseComponent implements OnInit {
 
+  showSideNavBar = true
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleNavBar() {
+    this.showSideNavBar = !this.showSideNavBar;
+  }
 }
