@@ -1,37 +1,10 @@
-.vertical-center {
-  vertical-align: -webkit-baseline-middle;
-}
-
-.nav-right {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-flex: 0;
-  -ms-flex: 0 1 auto;
-  flex: 0 1 auto;
-  margin-left: auto;
-}
-
-.nav-header-center{
-  position: absolute;
-  width: 100%;
-  top: 20%;
-  text-align: center;
-}
-
 .header-btn{
     background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
     cursor:pointer;
-    overflow: hidden;
-    outline:none;
-    color: #929aab;
 }
 
 .header-btn:hover{
-    color: #ffffff;
+    color: #865353;
 }
