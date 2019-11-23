@@ -5,9 +5,11 @@
 
 .container {
   position: relative;
-  background: #f1f1f1;
   margin: 40px auto;
-  height: 360px;
+  height: 500px;
+}
+.login-bg{
+  background-image: url(../../../assets/images/login.jpg);
 }
 
 .left-bg,
@@ -21,12 +23,10 @@
 }
 
 .left-bg {
-  background-color: #24800f;
   left: 0;
 }
 
 .right-bg {
-  background-color: #5988ad;
   background-position: right;
   right: 0;
 }
@@ -41,21 +41,21 @@
   height: 30px;
   line-height: 30px;
   border-radius: 15px;
-  top: 150px;
+  top: 180px;
   left: 0;
   -webkit-transform: translate(-50%, -50%);
 }
 
 .right-bg:after {
   content: " ";
-  height: 280px;
+  height: 420px;
   width: 1px;
   background-color: white;
   display: block;
   position: absolute;
   left: 0;
   right: 0;
-  top: 20px;
+  top: 50px;
 }
 
 .right-bg:after {
@@ -76,4 +76,20 @@
 
 .right-bg:hover+.left-bg {
   width: 40%;
+}
+
+.login-center{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.login-top25{
+  margin: 0;
+  position: absolute;
+  top: 25%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
