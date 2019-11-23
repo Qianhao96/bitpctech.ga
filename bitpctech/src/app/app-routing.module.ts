@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: 'home', component: UserHomeComponent, canActivate: [AuthGuard]}
     ]
   },
-  { path: 'about', component: AboutComponent}
+  { path: 'about-us', component: AboutComponent}
 ];
 @NgModule({
   declarations: [],
