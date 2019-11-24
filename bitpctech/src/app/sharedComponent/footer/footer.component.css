@@ -1,0 +1,25 @@
+.line {
+  border-bottom: 1px solid #ababab;
+  width: 170px;
+  margin: 0 auto;
+}
+
+.footer-center {
+  margin: 0 auto;
+}
+
+footer li {
+  display: inline;
+}
+
+footer {
+  background-color: #AAA;
+}
+
+.legals:hover {
+  color: #929292;
+}
+
+footer a {
+  text-decoration: none;
+}

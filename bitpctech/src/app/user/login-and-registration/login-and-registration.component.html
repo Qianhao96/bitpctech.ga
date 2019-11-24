@@ -1,177 +1,192 @@
-<div class="tab-content user-form-location" id="user-form">
-    <div class="tab-pane fade" [ngClass]="{ show: showSignInForm, active: showSignInForm }" id="nav-sign-in"
-        role="tabpanel" aria-labelledby="nav-home-tab">
-        <form [formGroup]="loginForm" #form="ngForm" class="form-horizontal" role="form" method="POST"
+<div class="container login-bg">
+  <div class="d-flex justify-content-center">
+    <div *ngIf="showSignInForm" style="z-index: 999;"> Login</div>
+    <div *ngIf="!showSignInForm" style="z-index: 999;"> Register</div>
+  </div>
+
+  <div class="">
+    <div class="left-bg d-flex justify-content-center">
+      <div class="tab-content user-form-location" id="user-form">
+        <div class="tab-pane fade" [ngClass]="{ show: showSignInForm, active: showSignInForm }" id="nav-sign-in"
+          role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="text-center">
+            welcome back
+          </div>
+
+          <form [formGroup]="loginForm" #form="ngForm" class="form-horizontal" role="form" method="POST"
             (submit)="onSignInSubmit(form)">
+
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <h2>Please Sign In</h2>
-                    <hr />
+              <div class="col">
+                <div class="form-group">
+                  <span>Email</span>
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <input formControlName="email" type="text" name="email" class="form-control" id="sign_in_email"
+                      required />
+                  </div>
                 </div>
+              </div>
+
+              <!-- <div *ngIf="SignInEmail.touched && SignInEmail.invalid" class="col-md-3">
+                <div *ngIf="SignInEmail.errors.required" class="form-control-feedback">
+                  <span class="align-middle badge badge-danger">
+                    Email is required
+                  </span>
+                </div>
+              </div> -->
             </div>
+
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem">
-                                <i class="fa fa-at"></i>
-                            </div>
-                            <input formControlName="email" type="text" name="email" class="form-control"
-                                id="sign_in_email" placeholder="John@gmail.com" required />
-                        </div>
-                    </div>
+              <div class="col">
+                <div class="form-group">
+                  <span>Password</span>
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <input formControlName="password" type="password" name="password" class="form-control"
+                      id="sign_in_password" required />
+                  </div>
                 </div>
-                <div *ngIf="SignInEmail.touched && SignInEmail.invalid" class="col-md-3">
-                    <div *ngIf="SignInEmail.errors.required" class="form-control-feedback">
-                        <span class="align-middle badge badge-danger">
-                            Email is required
-                        </span>
-                    </div>
+              </div>
+              <!-- <div *ngIf="SignInPassword.touched && SignInPassword.invalid" class="col-md-3">
+                <div *ngIf="SignInPassword.errors.required" class="form-control-feedback">
+                  <span class="align-middle badge badge-danger">
+                    password is required
+                  </span>
                 </div>
+              </div> -->
             </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem">
-                                <i class="fa fa-key"></i>
-                            </div>
-                            <input formControlName="password" type="password" name="password" class="form-control"
-                                id="sign_in_password" placeholder="Password" required />
-                        </div>
-                    </div>
-                </div>
-                <div *ngIf="SignInPassword.touched && SignInPassword.invalid" class="col-md-3">
-                    <div *ngIf="SignInPassword.errors.required" class="form-control-feedback">
-                        <span class="align-middle badge badge-danger">
-                            password is required
-                        </span>
-                    </div>
-                </div>
-            </div>
+
             <div class="row" style="padding-top: 1rem">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success mr-2">
-                        <i class="fa fa-sign-in"></i> Login
-                    </button>
-                    <button class="btn btn-info" (click)="toggleNavbar()" type="button">
-                        Don't have account?
-                    </button>
-                </div>
+              <div class="col">
+                <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success mr-2">
+                  <i class="fa fa-sign-in"></i> Login
+                </button>
+                <button class="btn btn-info" (click)="toggleNavTab()" type="button">
+                  Don't have account?
+                </button>
+              </div>
             </div>
-        </form>
-    </div>
-    <div class="tab-pane fade" [ngClass]="{ show: !showSignInForm, active: !showSignInForm }" id="nav-sign-up"
-        role="tabpanel" aria-labelledby="nav-profile-tab">
-        <form [formGroup]="registrationForm" #f="ngForm" role="form" method="POST" (submit)="onRegisterSubmit()">
+          </form>
+        </div>
+
+        <div class="tab-pane fade" [ngClass]="{ show: !showSignInForm, active: !showSignInForm }" id="nav-sign-up"
+          role="tabpanel" aria-labelledby="nav-profile-tab">
+          <div class="text-center">
+            Hi friends.
+          </div>
+          <form [formGroup]="registrationForm" #f="ngForm" role="form" method="POST" (submit)="onRegisterSubmit()">
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <h2>Register New User</h2>
-                    <hr />
+              <div class="col">
+                <div class="form-group">
+                  <span>Email</span>
+                  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <input formControlName="email" type="text" name="email" class="form-control" id="email" />
+                  </div>
                 </div>
+              </div>
+
+              <!-- <div *ngIf="SignUpEmail.touched && SignUpEmail.invalid" class="col-md-3">
+                <div *ngIf="SignUpEmail.errors.required" class="form-control-feedback">
+                  <span class="align-middle badge badge-danger">
+                    Email is required
+                  </span>
+                </div>
+                <div *ngIf="SignUpEmail.errors.email" class="form-control-feedback">
+                  <span class="align-middle badge badge-danger">
+                    Please provide a valid Email
+                  </span>
+                </div>
+              </div> -->
             </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem">
-                                <i class="fa fa-at"></i>
-                            </div>
-                            <input formControlName="email" type="text" name="email" class="form-control" id="email"
-                                placeholder="you@example.com" />
-                        </div>
-                    </div>
-                </div>
-                <div *ngIf="SignUpEmail.touched && SignUpEmail.invalid" class="col-md-3">
-                    <div *ngIf="SignUpEmail.errors.required" class="form-control-feedback">
-                        <span class="align-middle badge badge-danger">
-                            Email is required
-                        </span>
-                    </div>
-                    <div *ngIf="SignUpEmail.errors.email" class="form-control-feedback">
-                        <span class="align-middle badge badge-danger">
-                            Please provide a valid Email
-                        </span>
-                    </div>
-                </div>
-            </div>
+
             <div formGroupName="matchPassword">
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                <div class="input-group-addon" style="width: 2.6rem">
-                                    <i class="fa fa-key"></i>
-                                </div>
-                                <input formControlName="password" type="password" name="password" class="form-control"
-                                    id="password" placeholder="Password" />
-                            </div>
-                        </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <span>Password</span>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <input formControlName="password" type="password" name="password" class="form-control"
+                        id="password" />
                     </div>
-                    <div *ngIf="SignUpPassword.touched && SignUpPassword.invalid" class="col-md-3">
-                        <div *ngIf="SignUpPassword.errors.required" class="form-control-feedback">
-                            <span class="align-middle badge badge-danger">
-                                Password is required
-                            </span>
-                        </div>
-                        <div *ngIf="SignUpPassword.errors.passwordLength" class="form-control-feedback">
-                            <span class="align-middle badge badge-danger">
-                                Minimum password length is
-                                {{ SignUpPassword.errors.passwordLength.requiredLength }}
-                            </span>
-                        </div>
-                        <div *ngIf="SignUpPassword.errors.passwordLetter" class="form-control-feedback">
-                            <span class="align-middle badge badge-danger">
-                                {{ SignUpPassword.errors.passwordLetter.requiredLetter }}
-                            </span>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                <div class="input-group-addon" style="width: 2.6rem">
-                                    <i class="fa fa-key"></i>
-                                </div>
-                                <input formControlName="confirmPassword" type="password" name="confirmPassword"
-                                    class="form-control" id="confirmPassword" placeholder="Confirm Password" />
-                            </div>
-                        </div>
+
+                <!-- <div *ngIf="SignUpPassword.touched && SignUpPassword.invalid" class="col-md-3">
+                  <div *ngIf="SignUpPassword.errors.required" class="form-control-feedback">
+                    <span class="align-middle badge badge-danger">
+                      Password is required
+                    </span>
+                  </div>
+                  <div *ngIf="SignUpPassword.errors.passwordLength" class="form-control-feedback">
+                    <span class="align-middle badge badge-danger">
+                      Minimum password length is
+                      {{ SignUpPassword.errors.passwordLength.requiredLength }}
+                    </span>
+                  </div>
+                  <div *ngIf="SignUpPassword.errors.passwordLetter" class="form-control-feedback">
+                    <span class="align-middle badge badge-danger">
+                      {{ SignUpPassword.errors.passwordLetter.requiredLetter }}
+                    </span>
+                  </div>
+				</div> -->
+
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <span>Repeat password</span>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <input formControlName="confirmPassword" type="password" name="confirmPassword"
+                        class="form-control" id="confirmPassword" />
                     </div>
-                    <div *ngIf="SignUpConfirmPassword.touched && SignUpConfirmPassword.invalid" class="col-md-3">
-                        <div *ngIf="SignUpConfirmPassword.errors.required" class="form-control-feedback">
-                            <span class="align-middle badge badge-danger">
-                                Password is required
-                            </span>
-                        </div>
-                        <div *ngIf="SignUpConfirmPassword.errors.passwordMismatch" class="form-control-feedback">
-                            <span class="align-middle badge badge-danger">
-                                {{ SignUpConfirmPassword.errors.passwordMismatch }}
-                            </span>
-                        </div>
-                    </div>
+                  </div>
                 </div>
+
+                <!-- <div *ngIf="SignUpConfirmPassword.touched && SignUpConfirmPassword.invalid" class="col-md-3">
+                  <div *ngIf="SignUpConfirmPassword.errors.required" class="form-control-feedback">
+                    <span class="align-middle badge badge-danger">
+                      Password is required
+                    </span>
+                  </div>
+                  <div *ngIf="SignUpConfirmPassword.errors.passwordMismatch" class="form-control-feedback">
+                    <span class="align-middle badge badge-danger">
+                      {{ SignUpConfirmPassword.errors.passwordMismatch }}
+                    </span>
+                  </div>
+				</div> -->
+
+              </div>
             </div>
+
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-success mr-2">
-                        <i class="fa fa-user-plus"></i> Register
-                    </button>
-                    <button class="btn btn-info" (click)="toggleNavbar()" type="button">
-                        Already have account?
-                    </button>
-                </div>
+              <div class="col">
+                <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-success mr-2">
+                  <i class="fa fa-user-plus"></i> Register
+                </button>
+                <button class="btn btn-info" (click)="toggleNavTab()" type="button">
+                  Already have account?
+                </button>
+              </div>
             </div>
-        </form>
+
+          </form>
+        </div>
+      </div>
     </div>
+
+    <div class="right-bg d-flex justify-content-center">
+      <div class="login-center">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <i class="fab fa-facebook fa-2x"></i>
+          </li>
+          <li class="nav-item">
+            <i class="fab fa-google fa-2x"></i>
+          </li>
+          <li class="nav-item">
+            <i class="fab fa-weixin fa-2x"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
