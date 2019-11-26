@@ -17,6 +17,8 @@ import { AdminBaseComponent } from './admin/admin-base/admin-base.component';
 import { AuthInterceptor } from './sharedComponent/auth/auth.interceptor';
 import { ForbiddenComponent } from './sharedComponent/forbidden/forbidden.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
+import { DataTablesComponent } from './admin/admin-base/data-tables/data-tables.component';
+import { ReadmeComponent } from './admin/admin-base/readme/readme.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { UserHomeComponent } from './user/user-home/user-home.component';
     AboutComponent,
     FooterComponent,
     AdminBaseComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    DataTablesComponent,
+    ReadmeComponent
   ],
   imports: [
     BrowserModule,
