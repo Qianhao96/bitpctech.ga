@@ -19,6 +19,7 @@ import { ForbiddenComponent } from './sharedComponent/forbidden/forbidden.compon
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { DataTablesComponent } from './admin/admin-base/data-tables/data-tables.component';
 import { ReadmeComponent } from './admin/admin-base/readme/readme.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ReadmeComponent } from './admin/admin-base/readme/readme.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    ParticlesModule
+    ParticlesModule,
+    Ng2SmartTableModule
   ],
   providers: [
     {

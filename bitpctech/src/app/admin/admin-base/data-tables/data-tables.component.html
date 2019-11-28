@@ -1,1 +1,26 @@
-<p>data-tables works!</p>
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="pills-brand-tab" data-toggle="pill" href="#pills-brand" role="tab"
+            aria-controls="pills-brand" aria-selected="true">Brand</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-category-tab" data-toggle="pill" href="#pills-category" role="tab"
+            aria-controls="pills-category" aria-selected="false">Category</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-user-tab" data-toggle="pill" href="#pills-user" role="tab"
+            aria-controls="pills-user" aria-selected="false">User</a>
+    </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-brand" role="tabpanel" aria-labelledby="pills-brand-tab">
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.8);">
+            <div class="card-body">
+                <ng2-smart-table [settings]="brandSetting" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (createConfirm)="onCreateConfirm($event)">
+                </ng2-smart-table>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="pills-category" role="tabpanel" aria-labelledby="pills-category-tab">2</div>
+    <div class="tab-pane fade" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab">3</div>
+</div>

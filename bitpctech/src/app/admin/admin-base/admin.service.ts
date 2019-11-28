@@ -20,4 +20,8 @@ export class AdminService {
     return this.http.get(this.getAllBrandsUrl);
   }
 
+  addBrand(data){
+    return this.http.post(this.getAllBrandsUrl, data);
+  }
+
 }

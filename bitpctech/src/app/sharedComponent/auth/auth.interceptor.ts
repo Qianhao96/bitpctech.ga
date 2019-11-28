@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 //Every api need the token to authenticate the user, or use (auth.interceptor)
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private toastrService: ToastrService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (localStorage.getItem('token') != null) {
@@ -22,6 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     err => {
                         if (err.status == 401) {
                             localStorage.removeItem('token')
+                            this.toastrService.warning('Your session is expired, please login again.');
                             this.router.navigate(['/user/login']);
                         }
                         else if(err.status == 403){
