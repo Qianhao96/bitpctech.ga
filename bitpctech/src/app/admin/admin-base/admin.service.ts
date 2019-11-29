@@ -14,14 +14,36 @@ export class AdminService {
     console.log(this.baseUrl);
   }
   
+//Category table controls
+getAllCategories(){
+  var url = this.baseUrl + 'api/V1/admin/category'
+  return this.http.get(url);
+}
 
-  getAllBrandsUrl = this.baseUrl + 'api/V1/admin/brand';
+addCategory(data){
+  var url = this.baseUrl + 'api/V1/admin/category'
+  return this.http.post(url, data);
+}
+
+deleteCategory(categoryId){
+  var url = this.baseUrl + 'api/V1/admin/category/' + categoryId
+  return this.http.delete(url);
+}
+
+//Brand table controls
   getAllBrands(){
-    return this.http.get(this.getAllBrandsUrl);
+    var url = this.baseUrl + 'api/V1/admin/brand'
+    return this.http.get(url);
   }
 
   addBrand(data){
-    return this.http.post(this.getAllBrandsUrl, data);
+    var url = this.baseUrl + 'api/V1/admin/brand'
+    return this.http.post(url, data);
+  }
+
+  deleteBrand(brandId){
+    var url = this.baseUrl + 'api/V1/admin/brand/' + brandId
+    return this.http.delete(url);
   }
 
 }

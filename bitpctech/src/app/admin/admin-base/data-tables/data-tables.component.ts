@@ -17,7 +17,8 @@ export class DataTablesComponent implements OnInit {
     private toastrService: ToastrService) { }
 
   ngOnInit() {
-    this.getAllBrands();
+    this.brandGetAll();
+    this.categoryGetAll();
   }
 
   settingsBase = {
@@ -36,7 +37,7 @@ export class DataTablesComponent implements OnInit {
       deleteButtonContent: '<i class="fa fa-trash fa-lg"></i>',
       confirmDelete: true
     },
-    actions:{
+    actions: {
       position: 'left'
     },
     pager: {
@@ -50,23 +51,113 @@ export class DataTablesComponent implements OnInit {
     }
   };
 
-  source: LocalDataSource = new LocalDataSource();
+  validatingField(fields) {
+    var empty: Boolean;
+    for (let key in fields) {
+      if (fields[key] == "")
+        empty = true;
+      else
+        empty = false;
+    }
+    return empty;
+  }
 
-  onDeleteConfirm(event): void {
+  //Brand table controls
+  categoryDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
+      this.adminService.deleteCategory(event.data.id).subscribe(
+        (res: any) => {
+          this.toastrService.success(res.message);
+          console.log(res);
+        },
+        err => {
+          this.toastrService.success(err.error);
+          console.log(err);
+        }
+      );
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  categoryCreateConfirm(event): void {
+    delete event.newData.id;
+    if (this.validatingField(event.newData)) {
+      this.toastrService.warning("Invalid input");
+      return;
+    }
+
+    if (window.confirm('Are you sure you want to add this?')) {
+      event.confirm.resolve();
+      this.adminService.addCategory(event.newData).subscribe(
+        (res: any) => {
+          this.toastrService.success(res.message);
+          console.log(res);
+        },
+        err => {
+          this.toastrService.success(err.error);
+          console.log(err);
+        }
+      );
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  categorySource: LocalDataSource = new LocalDataSource();
+  categorySetting = this.settingsBase;
+  categoryGetAll() {
+    this.categorySetting.columns = {
+      id: {
+        title: 'ID'
+      },
+      name: {
+        title: 'Category Name'
+      },
+      displayOrder: {
+        title: 'Display Order'
+      }
+    };
+    this.adminService.getAllCategories().subscribe(
+      (res: any) => {
+        this.categorySource = new LocalDataSource(res.categories);
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  //Brand table controls
+  brandDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      event.confirm.resolve();
+      this.adminService.deleteBrand(event.data.id).subscribe(
+        (res: any) => {
+          this.toastrService.success(res.message);
+          console.log(res);
+        },
+        err => {
+          this.toastrService.success(err.error);
+          console.log(err);
+        }
+      );
 
     } else {
       event.confirm.reject();
     }
   }
 
-  onCreateConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
+  brandCreateConfirm(event): void {
+    delete event.newData.id;
+    if (this.validatingField(event.newData)) {
+      this.toastrService.warning("Invalid input");
+      return;
+    }
+    if (window.confirm('Are you sure you want to add this?')) {
       event.confirm.resolve();
-
-      delete event.newData.tableName;
-      delete event.newData.id;
 
       this.adminService.addBrand(event.newData).subscribe(
         (res: any) => {
@@ -83,13 +174,13 @@ export class DataTablesComponent implements OnInit {
     }
   }
 
-
+  brandSource: LocalDataSource = new LocalDataSource();
   brandSetting = this.settingsBase;
-  getAllBrands() {
+  brandGetAll() {
     this.brandSetting.columns = {
-      tableName: {
-        title: 'Brands'
-      },
+      // tableName: {
+      //   title: 'Brand'
+      // },
       id: {
         title: 'ID'
       },
@@ -99,7 +190,7 @@ export class DataTablesComponent implements OnInit {
     };
     this.adminService.getAllBrands().subscribe(
       (res: any) => {
-        this.source = new LocalDataSource(res.brands);
+        this.brandSource = new LocalDataSource(res.brands);
         console.log(res);
       },
       err => {

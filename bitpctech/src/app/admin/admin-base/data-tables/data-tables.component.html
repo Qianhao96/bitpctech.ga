@@ -16,11 +16,20 @@
     <div class="tab-pane fade show active" id="pills-brand" role="tabpanel" aria-labelledby="pills-brand-tab">
         <div class="card" style="background-color: rgba(255, 255, 255, 0.8);">
             <div class="card-body">
-                <ng2-smart-table [settings]="brandSetting" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (createConfirm)="onCreateConfirm($event)">
+                <ng2-smart-table [settings]="brandSetting" [source]="brandSource"
+                    (deleteConfirm)="brandDeleteConfirm($event)" (createConfirm)="brandCreateConfirm($event)">
                 </ng2-smart-table>
             </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="pills-category" role="tabpanel" aria-labelledby="pills-category-tab">2</div>
+    <div class="tab-pane fade" id="pills-category" role="tabpanel" aria-labelledby="pills-category-tab">
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.8);">
+            <div class="card-body">
+                <ng2-smart-table [settings]="categorySetting" [source]="categorySource"
+                    (deleteConfirm)="categoryDeleteConfirm($event)" (createConfirm)="categoryCreateConfirm($event)">
+                </ng2-smart-table>
+            </div>
+        </div>
+    </div>
     <div class="tab-pane fade" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab">3</div>
 </div>
