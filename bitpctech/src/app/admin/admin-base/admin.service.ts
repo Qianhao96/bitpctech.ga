@@ -46,4 +46,20 @@ deleteCategory(categoryId){
     return this.http.delete(url);
   }
 
+  //Specification table controls
+  getAllSpecifications(){
+    var url = this.baseUrl + 'api/V1/admin/specification'
+    return this.http.get(url);
+  }
+
+  addSpecification(data){
+    var url = this.baseUrl + 'api/V1/admin/specification'
+    return this.http.post(url, data);
+  }
+
+  deleteSpecification(specificationId){
+    var url = this.baseUrl + 'api/V1/admin/specification/' + specificationId
+    return this.http.delete(url);
+  }
+
 }

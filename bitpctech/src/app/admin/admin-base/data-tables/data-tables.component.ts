@@ -19,6 +19,7 @@ export class DataTablesComponent implements OnInit {
   ngOnInit() {
     this.brandGetAll();
     this.categoryGetAll();
+    this.specificationGetAll();
   }
 
   settingsBase = {
@@ -47,7 +48,7 @@ export class DataTablesComponent implements OnInit {
     columns: {
     },
     attr: {
-      class: 'table table-bordered'
+      class: 'table table-striped table-bordered table-hover'
     }
   };
 
@@ -207,6 +208,76 @@ export class DataTablesComponent implements OnInit {
     this.adminService.getAllBrands().subscribe(
       (res: any) => {
         this.brandSource = new LocalDataSource(res.brands);
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  //Specification table controls
+  specificationDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      event.confirm.resolve();
+      this.adminService.deleteSpecification(event.data.id).subscribe(
+        (res: any) => {
+          this.toastrService.success(res.message);
+          console.log(res);
+        },
+        err => {
+          this.toastrService.success(err.error);
+          console.log(err);
+        }
+      );
+
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  specificationCreateConfirm(event): void {
+    delete event.newData.id;
+    if (this.validatingField(event.newData)) {
+      this.toastrService.warning("Invalid input");
+      return;
+    }
+
+    if (window.confirm('Are you sure you want to add this?')) {
+      event.confirm.resolve();
+
+      this.adminService.addSpecification(event.newData).subscribe(
+        (res: any) => {
+          this.toastrService.success(res.message);
+          console.log(res);
+        },
+        err => {
+          this.toastrService.success(err.error);
+          console.log(err);
+        }
+      );
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  specificationSource: LocalDataSource = new LocalDataSource();
+  specificationSetting = this.deepCopy(this.settingsBase);
+  specificationGetAll() {
+    this.specificationSetting.columns = {
+      // tableName: {
+      //   title: 'Brand'
+      // },
+      id: {
+        title: 'ID'
+      },
+      description: {
+        title: 'Specification'
+      }
+    };
+    this.adminService.getAllSpecifications().subscribe(
+      (res: any) => {
+        this.specificationSource = new LocalDataSource(res.specifications);
         console.log(res);
       },
       err => {
