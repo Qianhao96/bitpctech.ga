@@ -51,6 +51,7 @@ export class DataTablesComponent implements OnInit {
     }
   };
 
+  //Use to validate if there is empty field 
   validatingField(fields) {
     var empty: Boolean;
     for (let key in fields) {
@@ -60,6 +61,21 @@ export class DataTablesComponent implements OnInit {
         empty = false;
     }
     return empty;
+  }
+
+  //Use to deep copy an variable or object
+  deepCopy(oldObj: any) {
+    var newObj = oldObj;
+    if (oldObj && typeof oldObj === "object") {
+      if (oldObj instanceof Date) {
+        return new Date(oldObj.getTime());
+      }
+      newObj = Object.prototype.toString.call(oldObj) === "[object Array]" ? [] : {};
+      for (var i in oldObj) {
+        newObj[i] = this.deepCopy(oldObj[i]);
+      }
+    }
+    return newObj;
   }
 
   //Brand table controls
@@ -106,7 +122,7 @@ export class DataTablesComponent implements OnInit {
   }
 
   categorySource: LocalDataSource = new LocalDataSource();
-  categorySetting = this.settingsBase;
+  categorySetting = this.deepCopy(this.settingsBase);
   categoryGetAll() {
     this.categorySetting.columns = {
       id: {
@@ -175,7 +191,7 @@ export class DataTablesComponent implements OnInit {
   }
 
   brandSource: LocalDataSource = new LocalDataSource();
-  brandSetting = this.settingsBase;
+  brandSetting = this.deepCopy(this.settingsBase);
   brandGetAll() {
     this.brandSetting.columns = {
       // tableName: {

@@ -57,8 +57,8 @@
 
             <div class="row" style="padding-top: 1rem">
               <div class="col">
-                <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success mr-2">
-                  <i class="fa fa-sign-in"></i> Login
+                <button id="sign_in_button" [disabled]="!loginForm.valid || clickedSignIn" type="submit" class="btn btn-success  mr-2">
+                  <i [ngClass]="clickedSignIn ? 'spinner-border text-danger spinner-border-sm' : 'fa fa-sign-in-alt'"></i> Login
                 </button>
                 <button class="btn btn-info" (click)="toggleNavTab()" type="button">
                   Don't have account?
@@ -159,8 +159,8 @@
 
             <div class="row">
               <div class="col">
-                <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-success mr-2">
-                  <i class="fa fa-user-plus"></i> Register
+                <button type="submit" [disabled]="!registrationForm.valid || clickedRegister" class="btn btn-success mr-2">
+                  <i [ngClass]="clickedRegister ? 'spinner-border text-danger spinner-border-sm' : 'fa fa-user-plus'"></i> Register
                 </button>
                 <button class="btn btn-info" (click)="toggleNavTab()" type="button">
                   Already have account?
