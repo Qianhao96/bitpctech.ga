@@ -11,6 +11,10 @@
         <a class="nav-link" id="pills-user-tab" data-toggle="pill" href="#pills-user" role="tab"
             aria-controls="pills-user" aria-selected="false">Specification</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-image-tab" data-toggle="pill" href="#pills-image" role="tab"
+            aria-controls="pills-image" aria-selected="false">Image</a>
+    </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-brand" role="tabpanel" aria-labelledby="pills-brand-tab">
@@ -38,6 +42,64 @@
                     (deleteConfirm)="specificationDeleteConfirm($event)"
                     (createConfirm)="specificationCreateConfirm($event)">
                 </ng2-smart-table>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.8);">
+            <div class="card-body">
+                <form [formGroup]="imageForm" #form="ngForm" class="form-horizontal" role="form" method="POST"
+                    (submit)="onConvertToBase64(form)">
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-images"></i></span>
+                                </div>
+                                <input formControlName="image1" type="text" name="image1" class="form-control"
+                                    id="image1" placeholder="image1" required />
+                            </div>
+                        </div>
+                        <div *ngIf="image1.touched && image1.invalid" class="col-md-3">
+                            <div *ngIf="image1.errors.required" class="form-control-feedback">
+                                <span class="align-middle badge badge-danger">
+                                    Image1 is required
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-images"></i></span>
+                                </div>
+                                <input formControlName="image2" type="text" name="image2" class="form-control"
+                                    id="image2" placeholder="image2" required />
+                            </div>
+                        </div>
+                        <div *ngIf="image2.touched && image2.invalid" class="col-md-3">
+                            <div *ngIf="image2.errors.required" class="form-control-feedback">
+                                <span class="align-middle badge badge-danger">
+                                    image2 is required
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-top: 1rem">
+                        <div class="col">
+                            <button id="sign_in_button" [disabled]="!imageForm.valid || clickedConvert"
+                                class="btn btn-success  mr-2">
+                                <i
+                                    [ngClass]="clickedSignIn ? 'spinner-border text-danger spinner-border-sm' : 'fa fa-sign-in-alt'"></i>
+                                Convert
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

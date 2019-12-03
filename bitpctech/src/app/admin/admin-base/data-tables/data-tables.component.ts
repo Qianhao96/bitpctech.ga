@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -285,4 +286,82 @@ export class DataTablesComponent implements OnInit {
       }
     );
   }
+
+
+  //Image control
+  imageForm = new FormGroup({
+    image1: new FormControl('', [
+      Validators.required
+    ]),
+    image2: new FormControl('', [
+      Validators.required
+    ]),
+    image3: new FormControl('', [
+      Validators.required
+    ]),
+    image4: new FormControl('', [
+      Validators.required
+    ]),
+    image5: new FormControl('', [
+      Validators.required
+    ]),
+    image6: new FormControl('', [
+      Validators.required
+    ]),
+    image7: new FormControl('', [
+      Validators.required
+    ]),
+    image8: new FormControl('', [
+      Validators.required
+    ]),
+    image9: new FormControl('', [
+      Validators.required
+    ]),
+    image10: new FormControl('', [
+      Validators.required
+    ])
+  });
+
+  get image1() {
+    return this.imageForm.get('image1');
+  }
+
+  get image2() {
+    return this.imageForm.get('image2');
+  }
+
+  get image3() {
+    return this.imageForm.get('image3');
+  }
+
+  get image4() {
+    return this.imageForm.get('image4');
+  }
+  get image5() {
+    return this.imageForm.get('image5');
+  }
+
+  get image6() {
+    return this.imageForm.get('image6');
+  }
+  get image7() {
+    return this.imageForm.get('image7');
+  }
+
+  get image8() {
+    return this.imageForm.get('image8');
+  }
+  get image9() {
+    return this.imageForm.get('image9');
+  }
+
+  get image10() {
+    return this.imageForm.get('image10');
+  }
+
+  // onConvertToBase64(form) {
+    
+  // }
+
+  clickedConvert: boolean;
 }
