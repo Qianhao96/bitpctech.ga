@@ -62,4 +62,20 @@ deleteCategory(categoryId){
     return this.http.delete(url);
   }
 
+    //Specification table controls
+    getAllImages(){
+      var url = this.baseUrl + 'api/V1/admin/images'
+      return this.http.get(url);
+    }
+  
+    addImage(data){
+      var url = this.baseUrl + 'api/V1/admin/images'
+      return this.http.post(url, data);
+    }
+  
+    deleteImage(imageId){
+      var url = this.baseUrl + 'api/V1/admin/images/' + imageId
+      return this.http.delete(url);
+    }
+
 }

@@ -359,9 +359,52 @@ export class DataTablesComponent implements OnInit {
     return this.imageForm.get('image10');
   }
 
-  // onConvertToBase64(form) {
-    
-  // }
+  imagePostData={};
 
-  clickedConvert: boolean;
+//   getBase64($event) {
+//     for (let image of $event.target){
+//       this.imagePostData[image.id]=this.readThis(image);
+//       console.log(image);
+//     }
+//  }
+ 
+ changeListener($event) : void {
+  this.readThis($event.target);
+ }
+
+readThis(inputValue: any): any{
+  var id = inputValue.id;
+  var imagePostData = this.imagePostData;
+  var file:File = inputValue.files[0];
+  var myReader:FileReader = new FileReader();
+  myReader.readAsDataURL(file);
+  myReader.onload = function () {
+    console.log(myReader.result);
+    imagePostData[id]=myReader.result;
+    return myReader.result;
+  };
+  myReader.onerror = function (error) {
+    console.log('Error: ', error);
+  };
+}
+
+  clickedAddImage: boolean;
+
+
+  AddImages(){
+    this.clickedAddImage = true;
+    this.adminService.addImage(this.imagePostData).subscribe(
+      (res: any) => {
+        this.toastrService.success(res.message);
+        this.clickedAddImage = false;
+        console.log(res);
+      },
+      err => {
+        this.toastrService.success(err.error);
+        this.clickedAddImage = false;
+        console.log(err);
+      }
+    );
+  }
+
 }

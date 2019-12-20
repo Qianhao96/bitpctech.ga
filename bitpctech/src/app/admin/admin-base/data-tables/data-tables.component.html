@@ -46,61 +46,220 @@
         </div>
     </div>
     <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
-        <div class="card" style="background-color: rgba(255, 255, 255, 0.8);">
-            <div class="card-body">
-                <form [formGroup]="imageForm" #form="ngForm" class="form-horizontal" role="form" method="POST"
-                    (submit)="onConvertToBase64(form)">
-
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-images"></i></span>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card" style="background-color: rgba(255, 255, 255, 0.8);">
+                <div class="card-body">
+                    <form [formGroup]="imageForm" #form="ngForm" class="form-horizontal" role="form">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group form-group">
+                                    <input formControlName="image1" type="file" name="image1" class="input-file"
+                                        accept="image/*" (change)="changeListener($event)" id="image1" placeholder="image1"
+                                        required />
                                 </div>
-                                <input formControlName="image1" type="text" name="image1" class="form-control"
-                                    id="image1" placeholder="image1" required />
                             </div>
-                        </div>
-                        <div *ngIf="image1.touched && image1.invalid" class="col-md-3">
-                            <div *ngIf="image1.errors.required" class="form-control-feedback">
-                                <span class="align-middle badge badge-danger">
-                                    Image1 is required
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="input-group form-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-images"></i></span>
+                            <div *ngIf="image1.touched && image1.invalid" class="col-md-3">
+                                <div *ngIf="image1.errors.required" class="form-control-feedback">
+                                    <span class="align-middle badge badge-danger">
+                                        Image1 is required
+                                    </span>
                                 </div>
-                                <input formControlName="image2" type="text" name="image2" class="form-control"
-                                    id="image2" placeholder="image2" required />
+                            </div>
+                            <div class="col-5">
+                                <img class="image-pcpart" src="{{imagePostData.image1}}" />
                             </div>
                         </div>
-                        <div *ngIf="image2.touched && image2.invalid" class="col-md-3">
-                            <div *ngIf="image2.errors.required" class="form-control-feedback">
-                                <span class="align-middle badge badge-danger">
-                                    image2 is required
-                                </span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row" style="padding-top: 1rem">
-                        <div class="col">
-                            <button id="sign_in_button" [disabled]="!imageForm.valid || clickedConvert"
-                                class="btn btn-success  mr-2">
-                                <i
-                                    [ngClass]="clickedSignIn ? 'spinner-border text-danger spinner-border-sm' : 'fa fa-sign-in-alt'"></i>
-                                Convert
-                            </button>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group form-group">
+                                    <input formControlName="image2" type="file" name="image2" class="input-file"
+                                        accept="image/*" (change)="changeListener($event)" id="image2" placeholder="image2"
+                                        required />
+                                </div>
+                            </div>
+                            <div *ngIf="image2.touched && image2.invalid" class="col-md-3">
+                                <div *ngIf="image2.errors.required" class="form-control-feedback">
+                                    <span class="align-middle badge badge-danger">
+                                        image2 is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <img class="image-pcpart" src="{{imagePostData.image2}}" />
+                            </div>
                         </div>
-                    </div>
-                </form>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group form-group">
+                                    <input formControlName="image3" type="file" name="image3" class="input-file"
+                                        accept="image/*" (change)="changeListener($event)" id="image3" placeholder="image3"
+                                        required />
+                                </div>
+                            </div>
+                            <div *ngIf="image3.touched && image3.invalid" class="col-md-3">
+                                <div *ngIf="image3.errors.required" class="form-control-feedback">
+                                    <span class="align-middle badge badge-danger">
+                                        Image3 is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <img class="image-pcpart" src="{{imagePostData.image3}}" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group form-group">
+                                    <input formControlName="image4" type="file" name="image4" class="input-file"
+                                        accept="image/*" (change)="changeListener($event)" id="image4" placeholder="image4"
+                                        required />
+                                </div>
+                            </div>
+                            <div *ngIf="image4.touched && image4.invalid" class="col-md-3">
+                                <div *ngIf="image4.errors.required" class="form-control-feedback">
+                                    <span class="align-middle badge badge-danger">
+                                        Image4 is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <img class="image-pcpart" src="{{imagePostData.image4}}" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group form-group">
+                                    <input formControlName="image5" type="file" name="image5" class="input-file"
+                                        accept="image/*" (change)="changeListener($event)" id="image5" placeholder="image5"
+                                        required />
+                                </div>
+                            </div>
+                            <div *ngIf="image5.touched && image5.invalid" class="col-md-3">
+                                <div *ngIf="image5.errors.required" class="form-control-feedback">
+                                    <span class="align-middle badge badge-danger">
+                                        Image5 is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <img class="image-pcpart" src="{{imagePostData.image5}}" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group form-group">
+                                    <input formControlName="image6" type="file" name="image6" class="input-file"
+                                        accept="image/*" (change)="changeListener($event)" id="image6" placeholder="image6"
+                                        required />
+                                </div>
+                            </div>
+                            <div *ngIf="image6.touched && image6.invalid" class="col-md-3">
+                                <div *ngIf="image6.errors.required" class="form-control-feedback">
+                                    <span class="align-middle badge badge-danger">
+                                        Image6 is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <img class="image-pcpart" src="{{imagePostData.image6}}" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group form-group">
+                                    <input formControlName="image7" type="file" name="image7" class="input-file"
+                                        accept="image/*" (change)="changeListener($event)" id="image7" placeholder="image7"
+                                        required />
+                                </div>
+                            </div>
+                            <div *ngIf="image7.touched && image7.invalid" class="col-md-3">
+                                <div *ngIf="image7.errors.required" class="form-control-feedback">
+                                    <span class="align-middle badge badge-danger">
+                                        Image7 is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <img class="image-pcpart" src="{{imagePostData.image7}}" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group form-group">
+                                    <input formControlName="image8" type="file" name="image8" class="input-file"
+                                        accept="image/*" (change)="changeListener($event)" id="image8" placeholder="image8"
+                                        required />
+                                </div>
+                            </div>
+                            <div *ngIf="image8.touched && image8.invalid" class="col-md-3">
+                                <div *ngIf="image8.errors.required" class="form-control-feedback">
+                                    <span class="align-middle badge badge-danger">
+                                        Image8 is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <img class="image-pcpart" src="{{imagePostData.image8}}" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group form-group">
+                                    <input formControlName="image9" type="file" name="image9" class="input-file"
+                                        accept="image/*" (change)="changeListener($event)" id="image9" placeholder="image9"
+                                        required />
+                                </div>
+                            </div>
+                            <div *ngIf="image9.touched && image9.invalid" class="col-md-3">
+                                <div *ngIf="image9.errors.required" class="form-control-feedback">
+                                    <span class="align-middle badge badge-danger">
+                                        Image9 is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <img class="image-pcpart" src="{{imagePostData.image9}}" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="input-group form-group">
+                                    <input formControlName="image10" type="file" name="image10" class="input-file"
+                                        accept="image/*" (change)="changeListener($event)" id="image10"
+                                        placeholder="image10" required />
+                                </div>
+                            </div>
+                            <div *ngIf="image10.touched && image10.invalid" class="col-md-3">
+                                <div *ngIf="image10.errors.required" class="form-control-feedback">
+                                    <span class="align-middle badge badge-danger">
+                                        Image10 is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <img class="image-pcpart" src="{{imagePostData.image10}}" />
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-top: 1rem">
+                            <div class="col">
+                                <button id="sign_in_button" [disabled]="!imageForm.valid || clickedAddImage" type="button" (click)="AddImages()"
+                                    class="btn btn-success  mr-2">
+                                    <i [ngClass]="clickedAddImage ? 'spinner-border text-danger spinner-border-sm' : 'fa fa-sign-in-alt'"></i>
+                                    Add Images
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
             </div>
-        </div>
+            <div class="col-md-6"></div>
+         </div>
     </div>
 </div>
