@@ -21,6 +21,7 @@ export class DataTablesComponent implements OnInit {
     this.brandGetAll();
     this.categoryGetAll();
     this.specificationGetAll();
+    this.ImageGetAll();
   }
 
   settingsBase = {
@@ -389,7 +390,8 @@ readThis(inputValue: any): any{
 }
 
   clickedAddImage: boolean;
-
+  newImagesId: string;
+  imageData;
 
   AddImages(){
     this.clickedAddImage = true;
@@ -397,11 +399,24 @@ readThis(inputValue: any): any{
       (res: any) => {
         this.toastrService.success(res.message);
         this.clickedAddImage = false;
+        this.newImagesId = res.imageId;
         console.log(res);
       },
       err => {
         this.toastrService.success(err.error);
         this.clickedAddImage = false;
+        console.log(err);
+      }
+    );
+  }
+
+  ImageGetAll() {
+    this.adminService.getAllImages().subscribe(
+      (res: any) => {
+        this.imageData = res.images;
+        console.log(res);
+      },
+      err => {
         console.log(err);
       }
     );

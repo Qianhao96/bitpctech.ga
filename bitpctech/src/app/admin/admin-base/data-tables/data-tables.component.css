@@ -5,6 +5,8 @@
 
 .image-pcpart{
     max-width: 20px;
+    position: relative;
+    top: 4px;
 }
 
 .image-pcpart:hover{
