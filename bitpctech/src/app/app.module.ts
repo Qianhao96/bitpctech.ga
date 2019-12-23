@@ -21,6 +21,7 @@ import { DataTablesComponent } from './admin/admin-base/data-tables/data-tables.
 import { ReadmeComponent } from './admin/admin-base/readme/readme.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ImagePreviewComponent } from './admin/image-preview/image-preview.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ImagePreviewComponent } from './admin/image-preview/image-preview.compo
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     ParticlesModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    NgImageSliderModule
   ],
   providers: [
     {

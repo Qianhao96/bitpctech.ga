@@ -360,40 +360,33 @@ export class DataTablesComponent implements OnInit {
     return this.imageForm.get('image10');
   }
 
-  imagePostData={};
+  imagePostData = {};
 
-//   getBase64($event) {
-//     for (let image of $event.target){
-//       this.imagePostData[image.id]=this.readThis(image);
-//       console.log(image);
-//     }
-//  }
- 
- changeListener($event) : void {
-  this.readThis($event.target);
- }
+  changeListener($event): void {
+    this.readThis($event.target);
+  }
 
-readThis(inputValue: any): any{
-  var id = inputValue.id;
-  var imagePostData = this.imagePostData;
-  var file:File = inputValue.files[0];
-  var myReader:FileReader = new FileReader();
-  myReader.readAsDataURL(file);
-  myReader.onload = function () {
-    console.log(myReader.result);
-    imagePostData[id]=myReader.result;
-    return myReader.result;
-  };
-  myReader.onerror = function (error) {
-    console.log('Error: ', error);
-  };
-}
+  readThis(inputValue: any): any {
+    var id = inputValue.id;
+    var imagePostData = this.imagePostData;
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+    myReader.readAsDataURL(file);
+    myReader.onload = function () {
+      console.log(myReader.result);
+      imagePostData[id] = myReader.result;
+      return myReader.result;
+    };
+    myReader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+  }
 
   clickedAddImage: boolean;
   newImagesId: string;
-  imageData;
+  imageObject = [];
 
-  AddImages(){
+  AddImages() {
     this.clickedAddImage = true;
     this.adminService.addImage(this.imagePostData).subscribe(
       (res: any) => {
@@ -410,10 +403,29 @@ readThis(inputValue: any): any{
     );
   }
 
+
+  //If want to know how ng-image-slider works, go to https://www.npmjs.com/package/ng-image-slider
   ImageGetAll() {
     this.adminService.getAllImages().subscribe(
       (res: any) => {
-        this.imageData = res.images;
+        for (let image of res.images) {
+          var tempImagesObject = [];
+          var temId = image.id;
+          delete image.id;
+
+          for (let key in image) {
+            var tempImageObject = {};
+            tempImageObject = {
+              image: image[key],
+              thumbImage: image[key],
+              alt: 'alt of image',
+              title: temId
+            };
+            tempImagesObject.push(tempImageObject);
+            console.log(image[key]);
+          }
+          this.imageObject.push(tempImagesObject);
+        }
         console.log(res);
       },
       err => {

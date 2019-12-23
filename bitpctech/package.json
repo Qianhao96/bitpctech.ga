@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
     "angular-particle": "^1.0.4",
+    "ng-image-slider": "^2.2.0",
     "ng2-completer": "^3.0.3",
     "ng2-smart-table": "^1.5.0",
     "ngx-toastr": "^11.2.0",
