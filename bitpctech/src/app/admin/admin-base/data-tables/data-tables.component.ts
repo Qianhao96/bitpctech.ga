@@ -323,6 +323,15 @@ export class DataTablesComponent implements OnInit {
     ])
   });
 
+  imageDeleteForm = new FormGroup({
+    imageId: new FormControl('', [
+      Validators.required
+    ])
+  });
+  get imageId(){
+    return this.imageDeleteForm.get('imageId');
+  }
+
   get image1() {
     return this.imageForm.get('image1');
   }
@@ -432,6 +441,24 @@ export class DataTablesComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  clickedDeleteImage: boolean;
+  imageDelete(){
+    this.clickedDeleteImage = true;
+    let imageId = this.imageDeleteForm.value.imageId;
+      this.adminService.deleteImage(imageId).subscribe(
+        (res: any) => {
+          this.clickedDeleteImage = false;
+          this.toastrService.success(res.message);
+          console.log(res);
+        },
+        err => {
+          this.clickedDeleteImage = false;
+          this.toastrService.success(err.error);
+          console.log(err);
+        }
+      );
   }
 
 }
