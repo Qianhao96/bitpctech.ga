@@ -18,7 +18,8 @@ export class AuthInterceptor implements HttpInterceptor {
                 headers: new HttpHeaders({
                     'Content-Type':  'application/json; charset=utf-8',
                     'Authorization': 'Bearer ' + localStorage.getItem('token'),
-                    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+                    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                    'Access-Control-Request-Headers': 'Content-Type'
                   })
             });
             return next.handle(clonedReq).pipe(
