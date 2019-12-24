@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-admin-base',
@@ -13,6 +13,15 @@ export class AdminBaseComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  // public innerWidth: any;
+  // @HostListener('window:resize', ['$event'])
+  // onResize(event) {
+  //   this.innerWidth = window.innerWidth;
+  //   if(this.innerWidth == 768)
+  //     this.showSideNavBar = !this.showSideNavBar;
+  //   console.log(this.innerWidth);
+  // }
 
   toggleNavBar() {
     this.showSideNavBar = !this.showSideNavBar;

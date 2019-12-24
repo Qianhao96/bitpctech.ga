@@ -1,3 +1,5 @@
+import { ReadmeComponent } from './admin/admin-base/readme/readme.component';
+import { DataTablesComponent } from './admin/admin-base/data-tables/data-tables.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { AdminBaseComponent } from './admin/admin-base/admin-base.component';
 import { NgModule } from '@angular/core';
@@ -10,9 +12,10 @@ import { AuthGuard } from './sharedComponent/auth/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   {
-    path: 'admin',
+    path: 'admin', component: AdminBaseComponent,
     children:[
-      { path: 'home', component: AdminBaseComponent}
+      { path: 'data-tables', component: DataTablesComponent},
+      { path: 'readme', component: ReadmeComponent},
     ],
     canActivate: [AuthGuard], data: { permittedRoles: ['Admin'] }
   },
