@@ -1,4 +1,98 @@
-.user-form-location{
-    margin-top: 25vh;
-    padding: 2ch;
+.user-form-location {
+  position: relative;
+  margin-top: 100px;
+}
+
+.container {
+  position: relative;
+  margin: 40px auto;
+  height: 500px;
+}
+.login-bg{
+  /* background-image: url(../../../assets/images/login.jpg); */
+  background: linear-gradient(89deg, #7d6a7d 0%, #444143 100%);
+  border-radius: 30%;
+  opacity: 0.9;
+}
+
+.left-bg,
+.right-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  height: 100;
+  transition: 0.25s ease;
+}
+
+.left-bg {
+  left: 0;
+}
+
+.right-bg {
+  background-position: right;
+  right: 0;
+}
+
+.right-bg:before {
+  content: "OR";
+  font-weight: bold;
+  position: absolute;
+  background: white;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 15px;
+  top: 180px;
+  left: 0;
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.right-bg:after {
+  content: " ";
+  height: 420px;
+  width: 1px;
+  background-color: white;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50px;
+}
+
+.right-bg:after {
+  right: 0;
+}
+
+.left-bg:hover {
+  width: 60%;
+}
+
+.left-bg:hover+.right-bg {
+  width: 40%;
+}
+
+.right-bg:hover {
+  width: 60%;
+}
+
+.right-bg:hover+.left-bg {
+  width: 40%;
+}
+
+.login-center{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.login-top25{
+  margin: 0;
+  position: absolute;
+  top: 25%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }

@@ -1,25 +1,53 @@
-<div class="pt-2 pb-2" style="background-color:#222831">
-  <nav class="nav">
-    <!-- Login Location -->
-    <div class="logo">
-      <a href="/" aria-label="Bitpctech">
-        <i class="fas fa-desktop fa-3x"></i>
-      </a>
-    </div>
-
-    <!-- Nav Left Position -->
-    <div class="nav-left vertical-center">
-      <a *ngIf="isLoggedIn && isAdmin" routerLink="/admin" class="nav-link">Admin</a>
-    </div>
-
-    <!-- Nav Right Position -->
-    <div class="nav-right">
-      <a *ngIf="!isLoggedIn; else notLogedIn" class="app-btn vertical-center" routerLink='/user/login' href="#" rel="nofollow">
-        <span> Login </span>
-      </a>
-      <ng-template #notLogedIn>
-        <a class="app-btn vertical-center" routerLink='' (click)="onLogout()">Logout</a>
-      </ng-template>
+<div class="sticky-top" style="background-color:#222831">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/" href="#"><i class="fas fa-desktop"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav" style="min-width: 100%;">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            More Actions
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" *ngIf="isLoggedIn && isAdmin" routerLink="/admin/data-tables" href="#">Admin</a>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Go To
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <button type="button" class="header-btn header-link" (click)="onScroll('div1')">Div1</button>
+            <button type="button" class="header-btn header-link" (click)="onScroll('div2')">Div2</button>
+            <button type="button" class="header-btn header-link" (click)="onScroll('div3')">Div3</button>
+          </div>
+        </li>
+        <li class="nav-item ml-auto">
+          <a *ngIf="!isLoggedIn; else notLoggedIn" class="app-btn nav-link" routerLink='/user/login' href="#">
+            <span>Login</span>
+          </a>
+          <ng-template #notLoggedIn>
+            <a class="app-btn nav-link" routerLink='' href="#" (click)="onLogout()"><span>Logout</span></a>
+          </ng-template>
+        </li>
+      </ul>
     </div>
   </nav>
 </div>

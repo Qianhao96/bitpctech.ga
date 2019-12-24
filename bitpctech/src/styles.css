@@ -11,7 +11,6 @@
   transition: all 0.4s;
   cursor: pointer;
   padding: 4px 17px 5px 17px;
-  margin-right: 28px;
   line-height: 24px;
 }
 .app-btn span {
@@ -44,11 +43,14 @@
 
 body {
   margin: 0;
+  opacity: 0.99;
   padding: 0;
-  font-family: "Courier New", Courier, monospace;
   background: linear-gradient(89deg, #444143 0%, #7d6a7d 100%);
 }
 
 button {
   cursor: pointer;
 }
+
+/* wave affect */
+
