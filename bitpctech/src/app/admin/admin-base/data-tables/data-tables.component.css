@@ -1,0 +1,21 @@
+.tab-background{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5%;
+}
+
+.image-pcpart{
+    max-width: 20px;
+    position: relative;
+    top: 4px;
+}
+
+.image-pcpart:hover{
+    max-width: 100px;
+    position: absolute;
+    top: 10px;
+    z-index: 999;
+}
+
+.input-file{
+    width: 202px;
+}
