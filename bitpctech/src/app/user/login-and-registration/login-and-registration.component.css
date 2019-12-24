@@ -9,7 +9,10 @@
   height: 500px;
 }
 .login-bg{
-  background-image: url(../../../assets/images/login.jpg);
+  /* background-image: url(../../../assets/images/login.jpg); */
+  background: linear-gradient(89deg, #7d6a7d 0%, #444143 100%);
+  border-radius: 30%;
+  opacity: 0.9;
 }
 
 .left-bg,
