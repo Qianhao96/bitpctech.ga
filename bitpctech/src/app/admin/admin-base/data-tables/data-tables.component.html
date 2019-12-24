@@ -15,6 +15,10 @@
         <a class="nav-link" id="pills-image-tab" data-toggle="pill" href="#pills-image" role="tab"
             aria-controls="pills-image" aria-selected="false">Image</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-pcpart-tab" data-toggle="pill" href="#pills-pcpart" role="tab"
+            aria-controls="pills-pcpart" aria-selected="false">Pc Parts</a>
+    </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-brand" role="tabpanel" aria-labelledby="pills-brand-tab">
@@ -46,7 +50,7 @@
         </div>
     </div>
     <div class="tab-pane fade" id="pills-image" role="tabpanel" aria-labelledby="pills-image-tab">
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-md-6">
                 <div class="card" style="background-color: rgba(255, 255, 255, 0.8);">
                     <div class="card-body">
@@ -250,7 +254,8 @@
                                 <div class="col">
                                     <button id="sign_in_button" [disabled]="!imageForm.valid || clickedAddImage"
                                         type="button" (click)="AddImages()" class="btn btn-success  mr-2">
-                                        <i [ngClass]="clickedAddImage ? 'spinner-border text-danger spinner-border-sm' : 'fa fa-sign-in-alt'"></i>
+                                        <i
+                                            [ngClass]="clickedAddImage ? 'spinner-border text-danger spinner-border-sm' : 'fa fa-sign-in-alt'"></i>
                                         Add Images
                                     </button>
                                 </div>
@@ -265,40 +270,57 @@
                     <div class="card-body">
                         <form [formGroup]="imageDeleteForm" role="form" method="POST" (submit)="imageDelete()">
                             <div class="row">
-                              <div class="col-md-3"></div>
-                              <div class="col-md-5">
-                                <div class="input-group form-group">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-hand-middle-finger"></i></span>
-                                  </div>
-                                  <input formControlName="imageId" type="text" name="imageId" class="form-control" required />
+                                <div class="col-md-3"></div>
+                                <div class="col-md-5">
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i
+                                                    class="fa fa-hand-middle-finger"></i></span>
+                                        </div>
+                                        <input formControlName="imageId" type="text" name="imageId" class="form-control"
+                                            required />
+                                    </div>
                                 </div>
-                              </div>
-                              <div *ngIf="imageId.touched && imageId.invalid" class="col-md-3">
-                                <div *ngIf="imageId.errors.required" class="form-control-feedback">
-                                  <span class="align-middle badge badge-danger">
-                                    Image Id is required
-                                  </span>
+                                <div *ngIf="imageId.touched && imageId.invalid" class="col-md-3">
+                                    <div *ngIf="imageId.errors.required" class="form-control-feedback">
+                                        <span class="align-middle badge badge-danger">
+                                            Image Id is required
+                                        </span>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
 
                             <div class="row">
-                              <div class="col-md-3"></div>
-                              <div class="col-md-5">
-                                <button type="submit" [disabled]="!imageDeleteForm.valid || clickedDeleteImage" 
-                                  class="btn btn-success mr-2">
-                                  <i [ngClass]=" clickedDeleteImage ? 'spinner-border text-danger spinner-border-sm' : 'fa fa-sign-in-alt'"></i>
-                                  Delete
-                                </button>
-                              </div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-5">
+                                    <button type="submit" [disabled]="!imageDeleteForm.valid || clickedDeleteImage"
+                                        class="btn btn-success mr-2">
+                                        <i
+                                            [ngClass]=" clickedDeleteImage ? 'spinner-border text-danger spinner-border-sm' : 'fa fa-sign-in-alt'"></i>
+                                        Delete
+                                    </button>
+                                </div>
                             </div>
-                          </form>
+                        </form>
 
                     </div>
                 </div>
             </div>
         </div>
-        <ng-image-slider *ngFor="let image of imageObject;" [images]="image" #nav></ng-image-slider>
+        <div class="row">
+            <div class="col-xl-2" *ngFor="let image of imageObject;">
+                <ng-image-slider  [images]="image" #nav></ng-image-slider>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="pills-pcpart" role="tabpanel" aria-labelledby="pills-pcpart-tab">
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.8);">
+            <div class="card-body">
+                <ng2-smart-table [settings]="pcPartSetting" [source]="pcPartSource"
+                    (deleteConfirm)="pcPartDeleteConfirm($event)"
+                    (createConfirm)="pcPartCreateConfirm($event)">
+                </ng2-smart-table>
+            </div>
+        </div>
     </div>
 </div>

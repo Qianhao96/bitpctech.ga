@@ -22,6 +22,7 @@ export class DataTablesComponent implements OnInit {
     this.categoryGetAll();
     this.specificationGetAll();
     this.ImageGetAll();
+    this.pcPartGetAll();
   }
 
   settingsBase = {
@@ -431,7 +432,7 @@ export class DataTablesComponent implements OnInit {
               title: temId
             };
             tempImagesObject.push(tempImageObject);
-            console.log(image[key]);
+            // console.log(image[key]);
           }
           this.imageObject.push(tempImagesObject);
         }
@@ -459,6 +460,105 @@ export class DataTablesComponent implements OnInit {
           console.log(err);
         }
       );
+  }
+
+  //Brand table controls
+  pcPartDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      event.confirm.resolve();
+      this.adminService.deletePcPart(event.data.id).subscribe(
+        (res: any) => {
+          this.toastrService.success(res.message);
+          console.log(res);
+        },
+        err => {
+          this.toastrService.success(err.error);
+          console.log(err);
+        }
+      );
+
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  pcPartCreateConfirm(event): void {
+    delete event.newData.id;
+    if (this.validatingField(event.newData)) {
+      this.toastrService.warning("Invalid input");
+      return;
+    }
+    if (window.confirm('Are you sure you want to add this?')) {
+      event.confirm.resolve();
+
+      this.adminService.addPcPart(event.newData).subscribe(
+        (res: any) => {
+          this.toastrService.success(res.message);
+          console.log(res);
+        },
+        err => {
+          this.toastrService.success(err.error);
+          console.log(err);
+        }
+      );
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  pcPartSource: LocalDataSource = new LocalDataSource();
+  pcPartSetting = this.deepCopy(this.settingsBase);
+  pcPartGetAll() {
+    this.pcPartSetting.columns = {
+      // tableName: {
+      //   title: 'Brand'
+      // },
+      id: {
+        title: 'ID'
+      },
+      name: {
+        title: 'Part Name'
+      },
+      brandId: {
+        title: 'Brand Id'
+      },
+      model: {
+        title: 'Model'
+      },
+      description: {
+        title: 'Description'
+      },
+      specificationId: {
+        title: 'Specification Id'
+      },
+      price: {
+        title: 'Price'
+      },
+      discount: {
+        title: 'Discount Percentage'
+      },
+      imagesId: {
+        title: 'Image Id'
+      },
+      displayOrder: {
+        title: 'Display Order'
+      },
+      categoryId: {
+        title: 'Category Id'
+      },
+      stockQuantity: {
+        title: 'Stock Quantity'
+      }
+    };
+    this.adminService.getAllPcPart().subscribe(
+      (res: any) => {
+        this.pcPartSource = new LocalDataSource(res.pcParts);
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }
