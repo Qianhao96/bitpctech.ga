@@ -17,6 +17,11 @@ import { AdminBaseComponent } from './admin/admin-base/admin-base.component';
 import { AuthInterceptor } from './sharedComponent/auth/auth.interceptor';
 import { ForbiddenComponent } from './sharedComponent/forbidden/forbidden.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
+import { DataTablesComponent } from './admin/admin-base/data-tables/data-tables.component';
+import { ReadmeComponent } from './admin/admin-base/readme/readme.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { ImagePreviewComponent } from './admin/image-preview/image-preview.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 @NgModule({
@@ -28,7 +33,10 @@ import { UserHomeComponent } from './user/user-home/user-home.component';
     AboutComponent,
     FooterComponent,
     AdminBaseComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    DataTablesComponent,
+    ReadmeComponent,
+    ImagePreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +45,9 @@ import { UserHomeComponent } from './user/user-home/user-home.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    ParticlesModule
+    ParticlesModule,
+    Ng2SmartTableModule,
+    NgImageSliderModule
   ],
   providers: [
     {

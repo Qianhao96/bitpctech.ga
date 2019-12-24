@@ -12,7 +12,9 @@ import { RegistrationValidators } from './login-and-registration.validators';
 })
 export class LoginAndRegistrationComponent implements OnInit {
 
-  showSignInForm = true
+  showSignInForm = true;
+  clickedSignIn: boolean;
+  clickedRegister: boolean;
 
   constructor(public service: UserService,
     private router: Router,
@@ -47,6 +49,7 @@ export class LoginAndRegistrationComponent implements OnInit {
   }
 
   onSignInSubmit(form) {
+    this.clickedSignIn = true;
     this.service.login(form.value).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);
@@ -54,6 +57,7 @@ export class LoginAndRegistrationComponent implements OnInit {
         this.router.navigate(['/'])
       },
       err => {
+        this.clickedSignIn = false
         if (err.status == 400)
           this.toastrService.error(err.error["errors"]);
         else
@@ -88,7 +92,7 @@ export class LoginAndRegistrationComponent implements OnInit {
     }
   }
 
-  toggleNavbar() {
+  toggleNavTab() {
     this.showSignInForm = !this.showSignInForm;
   }
 
@@ -106,18 +110,21 @@ export class LoginAndRegistrationComponent implements OnInit {
   }
 
   onRegisterSubmit() {
+    this.clickedRegister = true;
     let body = {
       Email: this.registrationForm.value.email,
       Password: this.registrationForm.value.matchPassword.password,
     }
     this.service.register(body).subscribe(
       (res: any) => {
+        this.clickedRegister = false;
         console.log(res.Token);
         this.toastrService.success('Please sign in with your new account.');
         this.showSignInForm = true;
         //this.router.navigate(['/user/login']);
       },
       err => {
+        this.clickedRegister = false;
         this.toastrService.success(err.error["errors"]);
       }
     );
