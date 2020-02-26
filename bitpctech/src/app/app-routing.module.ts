@@ -1,3 +1,4 @@
+import { CatalogComponent } from './anonymous/catalog/catalog.component';
 import { ReadmeComponent } from './admin/admin-base/readme/readme.component';
 import { DataTablesComponent } from './admin/admin-base/data-tables/data-tables.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
@@ -10,7 +11,7 @@ import { ForbiddenComponent } from './sharedComponent/forbidden/forbidden.compon
 import { AuthGuard } from './sharedComponent/auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  //{ path: '', redirectTo: '/catalog', pathMatch: 'full' },
   {
     path: 'admin', component: AdminBaseComponent,
     children:[
@@ -26,7 +27,8 @@ const routes: Routes = [
       { path: 'home', component: UserHomeComponent, canActivate: [AuthGuard]}
     ]
   },
-  { path: 'about-us', component: AboutComponent}
+  { path: 'about-us', component: AboutComponent},
+  { path: '', component: CatalogComponent}
 ];
 @NgModule({
   declarations: [],

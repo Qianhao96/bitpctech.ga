@@ -22,6 +22,8 @@ import { ReadmeComponent } from './admin/admin-base/readme/readme.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ImagePreviewComponent } from './admin/image-preview/image-preview.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { CatalogComponent } from './anonymous/catalog/catalog.component';
+import { ProductCardComponent } from './anonymous/catalog/product-card/product-card.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { NgImageSliderModule } from 'ng-image-slider';
     ForbiddenComponent,
     DataTablesComponent,
     ReadmeComponent,
-    ImagePreviewComponent
+    ImagePreviewComponent,
+    CatalogComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
