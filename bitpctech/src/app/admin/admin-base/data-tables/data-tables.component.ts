@@ -14,7 +14,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class DataTablesComponent implements OnInit {
 
   constructor(public adminService: AdminService,
-    private router: Router,
     private toastrService: ToastrService) { }
 
   ngOnInit() {
