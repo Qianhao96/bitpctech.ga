@@ -1,2 +1,38 @@
-<p>catalog works!</p>
-<app-product-card *ngFor="let card of Cards" [productData]="card"></app-product-card>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" [ngClass]="{ active: !showSideNavBar }">
+        <div class="sidebar-header">
+            <h3>Welcome 刘少</h3>
+        </div>
+
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a *ngFor="let category of Categories; first as isFirst; index as i;" class="nav-link" [ngClass]="{ active: isFirst}" id="{{category.name.replace(' ','')}}-tab" data-toggle="pill" href="#{{category.name.replace(' ','')}}" role="tab"
+            attr.aria-controls="{{category.name.replace(' ','')}}">{{category.name}}</a>
+        </div>
+
+        <ul class="list-unstyled CTAs">
+            <li>
+                <a href="#" class="download">Download source</a>
+            </li>
+            <li>
+                <a href="#" class="article">Back to article</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <button type="button" class="hamburger animated fadeInLeft mb-3"
+            [ngClass]="{ is_closed: !showSideNavBar, is_open: showSideNavBar }" (click)="toggleNavBar()">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+
+
+        <div class="tab-content" id="v-pills-tabContent">
+            <div *ngFor="let category of Categories; first as isFirst; index as i;" class="tab-pane fade" [ngClass]="{ active: isFirst, show:isFirst}" id="{{category.name.replace(' ','')}}" role="tabpanel" attr.aria-labelledby="{{category.name.replace(' ','')}}-tab">
+                {{category.name}}</div>
+        </div>
+    </div>
+</div>
