@@ -21,13 +21,14 @@ export class CatalogComponent implements OnInit {
     this.showSideNavBar = !this.showSideNavBar;
   }
 
-  Cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
   Categories;
   categoryGetAll() {
     this.anonymousService.getAllCategories().subscribe(
       (res: any) => {
         this.Categories = res;
+        this.Categories.sort(function(a, b){
+          return a.displayOrder - b.displayOrder;
+        });
         console.log(res);
       },
       err => {

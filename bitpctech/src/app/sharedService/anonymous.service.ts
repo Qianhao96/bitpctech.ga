@@ -19,9 +19,13 @@ export class AnonymousService {
         return this.http.get(url);
     }
 
-    //Category table controls
     getAllCategories() {
         var url = this.baseUrl + 'api/V1/catalog/category'
+        return this.http.get(url);
+    }
+
+    getProductsByCategoryAndBrand(categoryId, brandId) {
+        var url = this.baseUrl + 'api/V1/catalog/product/' + categoryId + "/" + brandId
         return this.http.get(url);
     }
 }

@@ -6,8 +6,10 @@
         </div>
 
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a *ngFor="let category of Categories; first as isFirst; index as i;" class="nav-link" [ngClass]="{ active: isFirst}" id="{{category.name.replace(' ','')}}-tab" data-toggle="pill" href="#{{category.name.replace(' ','')}}" role="tab"
-            attr.aria-controls="{{category.name.replace(' ','')}}">{{category.name}}</a>
+            <a *ngFor="let category of Categories; first as isFirst; index as i;" class="nav-link"
+                [ngClass]="{ active: isFirst}" id="{{category.name.replace(' ','')}}-tab" data-toggle="pill"
+                href="#{{category.name.replace(' ','')}}" role="tab"
+                attr.aria-controls="{{category.name.replace(' ','')}}">{{category.name}}</a>
         </div>
 
         <ul class="list-unstyled CTAs">
@@ -31,8 +33,27 @@
 
 
         <div class="tab-content" id="v-pills-tabContent">
-            <div *ngFor="let category of Categories; first as isFirst; index as i;" class="tab-pane fade" [ngClass]="{ active: isFirst, show:isFirst}" id="{{category.name.replace(' ','')}}" role="tabpanel" attr.aria-labelledby="{{category.name.replace(' ','')}}-tab">
-                {{category.name}}</div>
+            <div *ngFor="let category of Categories; first as isFirst; index as i;" class="tab-pane fade"
+                [ngClass]="{ active: isFirst, show:isFirst}" id="{{category.name.replace(' ','')}}" role="tabpanel"
+                attr.aria-labelledby="{{category.name.replace(' ','')}}-tab">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li *ngFor="let brand of Brands; first as brandIsFirst;" class="nav-item">
+                        <a class="nav-link" [ngClass]="{ active: brandIsFirst}"
+                            id="{{category.name.replace(' ','')}}{{brand.name.replace(' ','')}}-tab" data-toggle="pill"
+                            href="#{{category.name.replace(' ','')}}{{brand.name.replace(' ','')}}" role="tab"
+                            attr.aria-controls="{{category.name.replace(' ','')}}{{brand.name.replace(' ','')}}">{{brand.name}}</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="pills-tabContent">
+                    <div *ngFor="let brand of Brands; first as brandIsFirst;" class="tab-pane fade"
+                        [ngClass]="{ active: brandIsFirst, show:brandIsFirst}"
+                        id="{{category.name.replace(' ','')}}{{brand.name.replace(' ','')}}" role="tabpanel"
+                        attr.aria-labelledby="{{category.name.replace(' ','')}}{{brand.name.replace(' ','')}}-tab">
+                        <app-product-card CategoryId={{category.id}} BrandId={{brand.id}}></app-product-card>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

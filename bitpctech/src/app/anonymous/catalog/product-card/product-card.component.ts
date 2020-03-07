@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AnonymousService } from 'src/app/sharedService/anonymous.service';
 
 @Component({
   selector: 'app-product-card',
@@ -7,10 +8,38 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public anonymousService: AnonymousService) { }
 
   ngOnInit() {
+    this.GetProductByCategoryAndBrand(this.CategoryId, this.BrandId);
   }
 
-  @Input() productData;
+  @Input() CategoryId;
+  @Input() BrandId;
+
+  Loading = true;
+  Products;
+  GetProductByCategoryAndBrand(CategoryId, BrandId) {
+    this.anonymousService.getProductsByCategoryAndBrand(CategoryId, BrandId).subscribe(
+      (res: any) => {
+        this.Products = res;
+
+        //Sorting a json array
+        this.Products.sort(function(a, b){
+          return a.displayOrder - b.displayOrder;
+        });
+        this.Loading = false;
+        console.log(res);
+
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  RemoveImageId(index, item){
+    var temId = item.images.id;
+    delete item.images.id;
+  }
 }
